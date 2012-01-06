@@ -1,5 +1,7 @@
 package SVG::Graph::Glyph::wedge;
 
+# VERSION
+
 use base SVG::Graph::Glyph;
 use strict;
 use constant PI => 3.14159;
@@ -10,7 +12,7 @@ use constant PI => 3.14159;
  Usage   :
  Function:
  Example :
- Returns : 
+ Returns :
  Args    :
 
 =cut

@@ -1,5 +1,7 @@
 package SVG::Graph::Glyph::tree;
 
+# VERSION
+
 use base SVG::Graph::Glyph;
 use Data::Dumper;
 use strict;
@@ -10,9 +12,8 @@ use strict;
  Usage   :
  Function:
  Example :
- Returns : 
+ Returns :
  Args    :
-
 
 =cut
 
@@ -83,9 +84,8 @@ sub getmaxy {
  Usage   :
  Function:
  Example :
- Returns : 
+ Returns :
  Args    :
-
 
 =cut
 

@@ -1,5 +1,7 @@
 package SVG::Graph::Data::Tree;
 
+# VERSION
+
 use strict;
 use SVG::Graph::Data::Node;
 
@@ -9,9 +11,8 @@ use SVG::Graph::Data::Node;
  Usage   :
  Function:
  Example :
- Returns : 
+ Returns :
  Args    :
-
 
 =cut
 
@@ -28,9 +29,8 @@ sub new {
  Usage   :
  Function:
  Example :
- Returns : 
+ Returns :
  Args    :
-
 
 =cut
 
@@ -51,9 +51,8 @@ sub init {
  Usage   :
  Function:
  Example :
- Returns : 
+ Returns :
  Args    :
-
 
 =cut
 
@@ -67,11 +66,10 @@ sub depth {
 
  Title   : root
  Usage   : $obj->root($newval)
- Function: 
- Example : 
+ Function:
+ Example :
  Returns : value of root (a scalar)
  Args    : on set, new value (a scalar or undef, optional)
-
 
 =cut
 
@@ -88,9 +86,8 @@ sub root {
  Usage   :
  Function:
  Example :
- Returns : 
+ Returns :
  Args    :
-
 
 =cut
 

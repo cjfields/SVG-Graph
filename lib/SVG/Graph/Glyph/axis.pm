@@ -1,5 +1,7 @@
 package SVG::Graph::Glyph::axis;
 
+# VERSION
+
 use base SVG::Graph::Glyph;
 use strict;
 
@@ -9,9 +11,8 @@ use strict;
  Usage   :
  Function:
  Example :
- Returns : 
+ Returns :
  Args    :
-
 
 =cut
 
@@ -81,11 +82,11 @@ sub draw {
 
             $group->line(
                 x1 => $self->xoffset + $tickpos,
-                y1 => $self->yoffset 
+                y1 => $self->yoffset
                     + $self->ysize
                     - ( $self->y_intercept * $yscale ),
                 x2 => $self->xoffset + $tickpos,
-                y2 => $self->yoffset 
+                y2 => $self->yoffset
                     + $self->ysize
                     - ( $self->y_intercept * $yscale )
                     + ( $self->group->_parent_svg->margin / 8 ),
@@ -96,7 +97,7 @@ sub draw {
             my $x_tick_label = shift @x_tick_labels;
             my $x            = $self->xoffset + $tickpos;
             my $y
-                = $self->yoffset 
+                = $self->yoffset
                 + $self->ysize
                 - ( $self->y_intercept * $yscale )
                 + ( $self->group->_parent_svg->margin / 4 );
@@ -130,11 +131,11 @@ sub draw {
 
             $group->line(
                 x1 => $self->xoffset + $tickpos,
-                y1 => $self->yoffset 
+                y1 => $self->yoffset
                     + $self->ysize
                     - ( $self->y_intercept * $yscale ),
                 x2 => $self->xoffset + $tickpos,
-                y2 => $self->yoffset 
+                y2 => $self->yoffset
                     + $self->ysize
                     - ( $self->y_intercept * $yscale )
                     + ( $self->group->_parent_svg->margin / 8 ),
@@ -160,7 +161,7 @@ sub draw {
             $group->line(
                 x1 => $self->xoffset + ( $self->x_intercept * $xscale ),
                 y1 => $self->yoffset + $self->ysize - $tickpos,
-                x2 => $self->xoffset 
+                x2 => $self->xoffset
                     + ( $self->x_intercept * $xscale )
                     - ( $self->group->_parent_svg->margin / 8 ),
                 y2    => $self->yoffset + $self->ysize - $tickpos,
@@ -172,7 +173,7 @@ sub draw {
 
             #	   my $x = $self->xoffset + $tickpos;
             my $x
-                = $self->xoffset 
+                = $self->xoffset
                 + ( $self->x_intercept * $xscale )
                 - ( $self->group->_parent_svg->margin );
 
@@ -211,7 +212,7 @@ sub draw {
             $group->line(
                 x1 => $self->xoffset + ( $self->x_intercept * $xscale ),
                 y1 => $self->yoffset + $self->ysize - $tickpos,
-                x2 => $self->xoffset 
+                x2 => $self->xoffset
                     + ( $self->x_intercept * $xscale )
                     - ( $self->group->_parent_svg->margin / 8 ),
                 y2    => $self->yoffset + $self->ysize - $tickpos,
@@ -226,11 +227,10 @@ sub draw {
 
  Title   : x_intercept
  Usage   : $obj->x_intercept($newval)
- Function: 
- Example : 
+ Function:
+ Example :
  Returns : value of x_intercept (a scalar)
  Args    : on set, new value (a scalar or undef, optional)
-
 
 =cut
 
@@ -245,11 +245,10 @@ sub x_intercept {
 
  Title   : y_intercept
  Usage   : $obj->y_intercept($newval)
- Function: 
- Example : 
+ Function:
+ Example :
  Returns : value of y_intercept (a scalar)
  Args    : on set, new value (a scalar or undef, optional)
-
 
 =cut
 
@@ -264,11 +263,10 @@ sub y_intercept {
 
  Title   : x_fractional_ticks
  Usage   : $obj->x_fractional_ticks($newval)
- Function: 
- Example : 
+ Function:
+ Example :
  Returns : value of x_fractional_ticks (a scalar)
  Args    : on set, new value (a scalar or undef, optional)
-
 
 =cut
 
@@ -283,11 +281,10 @@ sub x_fractional_ticks {
 
  Title   : y_fractional_ticks
  Usage   : $obj->y_fractional_ticks($newval)
- Function: 
- Example : 
+ Function:
+ Example :
  Returns : value of y_fractional_ticks (a scalar)
  Args    : on set, new value (a scalar or undef, optional)
-
 
 =cut
 
@@ -302,11 +299,10 @@ sub y_fractional_ticks {
 
  Title   : x_absolute_ticks
  Usage   : $obj->x_absolute_ticks($newval)
- Function: 
- Example : 
+ Function:
+ Example :
  Returns : value of x_absolute_ticks (a scalar)
  Args    : on set, new value (a scalar or undef, optional)
-
 
 =cut
 
@@ -321,11 +317,10 @@ sub x_absolute_ticks {
 
  Title   : y_fractional_ticks
  Usage   : $obj->y_fractional_ticks($newval)
- Function: 
- Example : 
+ Function:
+ Example :
  Returns : value of y_fractional_ticks (a scalar)
  Args    : on set, new value (a scalar or undef, optional)
-
 
 =cut
 
@@ -340,11 +335,10 @@ sub y_absolute_ticks {
 
  Title   : x_intertick_labels
  Usage   : $obj->x_intertick_labels($newval)
- Function: 
- Example : 
+ Function:
+ Example :
  Returns : value of x_intertick_labels (a scalar)
  Args    : on set, new value (a scalar or undef, optional)
-
 
 =cut
 
@@ -359,11 +353,10 @@ sub x_intertick_labels {
 
  Title   : x_tick_labels
  Usage   : $obj->x_tick_labels($newval)
- Function: 
- Example : 
+ Function:
+ Example :
  Returns : value of x_tick_labels (a scalar)
  Args    : on set, new value (a scalar or undef, optional)
-
 
 =cut
 
@@ -378,11 +371,10 @@ sub x_tick_labels {
 
  Title   : y_intertick_labels
  Usage   : $obj->y_intertick_labels($newval)
- Function: 
- Example : 
+ Function:
+ Example :
  Returns : value of y_intertick_labels (a scalar)
  Args    : on set, new value (a scalar or undef, optional)
-
 
 =cut
 
@@ -397,11 +389,10 @@ sub y_intertick_labels {
 
  Title   : y_tick_labels
  Usage   : $obj->y_tick_labels($newval)
- Function: 
- Example : 
+ Function:
+ Example :
  Returns : value of y_tick_labels (a scalar)
  Args    : on set, new value (a scalar or undef, optional)
-
 
 =cut
 

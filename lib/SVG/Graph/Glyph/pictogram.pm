@@ -1,5 +1,7 @@
 package SVG::Graph::Glyph::pictogram;
 
+# VERSION
+
 use base SVG::Graph::Glyph;
 use strict;
 use Data::Dumper;
@@ -14,7 +16,6 @@ our @lifts;
  Example :
  Returns :
  Args    :
-
 
 =cut
 
@@ -98,11 +99,10 @@ sub _glyphs {
 
  Title   : color
  Usage   : $obj->color($newval)
- Function: 
- Example : 
+ Function:
+ Example :
  Returns : value of color (a scalar)
  Args    : on set, new value (a scalar or undef, optional)
-
 
 =cut
 

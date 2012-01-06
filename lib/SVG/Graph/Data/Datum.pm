@@ -1,5 +1,7 @@
 package SVG::Graph::Data::Datum;
 
+# VERSION
+
 use strict;
 
 #use overload
@@ -14,12 +16,11 @@ use strict;
 =head2 new
 
  Title   : new
- Usage   : 
+ Usage   :
  Function:
  Example :
- Returns : 
+ Returns :
  Args    :
-
 
 =cut
 
@@ -36,9 +37,8 @@ sub new {
  Usage   :
  Function:
  Example :
- Returns : 
+ Returns :
  Args    :
-
 
 =cut
 
@@ -55,9 +55,8 @@ sub init {
  Usage   :
  Function:
  Example :
- Returns : 
+ Returns :
  Args    :
-
 
 =cut
 
@@ -73,9 +72,8 @@ sub x {
  Usage   :
  Function:
  Example :
- Returns : 
+ Returns :
  Args    :
-
 
 =cut
 
@@ -91,9 +89,8 @@ sub y {
  Usage   :
  Function:
  Example :
- Returns : 
+ Returns :
  Args    :
-
 
 =cut
 
@@ -109,9 +106,8 @@ sub z {
  Usage   :
  Function:
  Example :
- Returns : 
+ Returns :
  Args    :
-
 
 =cut
 
@@ -127,9 +123,8 @@ sub label {
  Usage   :
  Function:
  Example :
- Returns : 
+ Returns :
  Args    :
-
 
 =cut
 

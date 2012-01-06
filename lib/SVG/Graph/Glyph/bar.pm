@@ -1,5 +1,7 @@
 package SVG::Graph::Glyph::bar;
 
+# VERSION
+
 use base SVG::Graph::Glyph;
 use strict;
 use Data::Dumper;
@@ -12,9 +14,8 @@ our @lifts;
  Usage   :
  Function:
  Example :
- Returns : 
+ Returns :
  Args    :
-
 
 =cut
 

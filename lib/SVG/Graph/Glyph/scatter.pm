@@ -1,5 +1,7 @@
 package SVG::Graph::Glyph::scatter;
 
+# VERSION
+
 use base SVG::Graph::Glyph;
 use strict;
 
@@ -9,9 +11,8 @@ use strict;
  Usage   :
  Function:
  Example :
- Returns : 
+ Returns :
  Args    :
-
 
 =cut
 

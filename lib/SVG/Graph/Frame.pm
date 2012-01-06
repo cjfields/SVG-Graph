@@ -1,5 +1,7 @@
 package SVG::Graph::Frame;
 
+# VERSION
+
 use base SVG::Graph::Data;
 use strict;
 use Data::Dumper;
@@ -10,9 +12,8 @@ use Data::Dumper;
  Usage   : you should not be calling new, see add_frame
  Function:
  Example :
- Returns : 
+ Returns :
  Args    :
-
 
 =cut
 
@@ -29,9 +30,8 @@ sub new {
  Usage   :
  Function:
  Example :
- Returns : 
+ Returns :
  Args    :
-
 
 =cut
 
@@ -117,7 +117,6 @@ sub init {
  Returns : a SVG::Graph::Glyph::glyph_name object
  Args    : glyph dependent
 
-
 =cut
 
 sub add_glyph {
@@ -150,8 +149,6 @@ sub add_glyph {
                                          'bottom' rotates graph 180 deg (about the center)
                                          'right' points top position towards right
                                          'left' points top position towards left
- 
-
 
 =cut
 
@@ -203,9 +200,8 @@ sub add_frame {
  Usage   :
  Function:
  Example :
- Returns : 
+ Returns :
  Args    :
-
 
 =cut
 
@@ -221,7 +217,6 @@ sub frames {
  Function: adds a SVG::Graph::Data object to the current Frame
  Returns : none
  Args    : SVG::Graph::Data object
-
 
 =cut
 
@@ -256,9 +251,8 @@ sub add_data {
  Usage   :
  Function:
  Example :
- Returns : 
+ Returns :
  Args    :
-
 
 =cut
 
@@ -287,9 +281,8 @@ sub all_data {
  Usage   :
  Function:
  Example :
- Returns : 
+ Returns :
  Args    :
-
 
 =cut
 
@@ -313,9 +306,8 @@ sub data {
  Usage   :
  Function:
  Example :
- Returns : 
+ Returns :
  Args    :
-
 
 =cut
 
@@ -330,9 +322,8 @@ sub glyphs {
  Usage   :
  Function:
  Example :
- Returns : 
+ Returns :
  Args    :
-
 
 =cut
 
@@ -355,9 +346,8 @@ sub data_chunks {
  Usage   : should not directly call this method, see SVG::Graph->draw
  Function: depends on child glyph implementations
  Example :
- Returns : 
+ Returns :
  Args    :
-
 
 =cut
 
@@ -383,9 +373,8 @@ sub draw {
  Usage   :
  Function:
  Example :
- Returns : 
+ Returns :
  Args    :
-
 
 =cut
 
@@ -432,11 +421,10 @@ sub _recalculate_stats {
 
  Title   : _parent_svg
  Usage   : $obj->_parent_svg($newval)
- Function: 
- Example : 
+ Function:
+ Example :
  Returns : value of _parent_svg (a scalar)
  Args    : on set, new value (a scalar or undef, optional)
-
 
 =cut
 
@@ -451,11 +439,10 @@ sub _parent_svg {
 
  Title   : _parent_frame
  Usage   : $obj->_parent_frame($newval)
- Function: 
- Example : 
+ Function:
+ Example :
  Returns : value of _parent_frame (a scalar)
  Args    : on set, new value (a scalar or undef, optional)
-
 
 =cut
 
@@ -472,11 +459,10 @@ sub _parent_frame {
 
  Title   : svg
  Usage   : $obj->svg($newval)
- Function: 
- Example : 
+ Function:
+ Example :
  Returns : value of svg (a scalar)
  Args    : on set, new value (a scalar or undef, optional)
-
 
 =cut
 
@@ -491,11 +477,10 @@ sub svg {
 
  Title   : xsize
  Usage   : $obj->xsize($newval)
- Function: 
- Example : 
+ Function:
+ Example :
  Returns : value of xsize (a scalar)
  Args    : on set, new value (a scalar or undef, optional)
-
 
 =cut
 
@@ -512,11 +497,10 @@ sub xsize {
 
  Title   : ysize
  Usage   : $obj->ysize($newval)
- Function: 
- Example : 
+ Function:
+ Example :
  Returns : value of ysize (a scalar)
  Args    : on set, new value (a scalar or undef, optional)
-
 
 =cut
 
@@ -533,11 +517,10 @@ sub ysize {
 
  Title   : xoffset
  Usage   : $obj->xoffset($newval)
- Function: 
- Example : 
+ Function:
+ Example :
  Returns : value of xoffset (a scalar)
  Args    : on set, new value (a scalar or undef, optional)
-
 
 =cut
 
@@ -554,11 +537,10 @@ sub xoffset {
 
  Title   : yoffset
  Usage   : $obj->yoffset($newval)
- Function: 
- Example : 
+ Function:
+ Example :
  Returns : value of yoffset (a scalar)
  Args    : on set, new value (a scalar or undef, optional)
-
 
 =cut
 
@@ -575,11 +557,10 @@ sub yoffset {
 
  Title   : xmin
  Usage   : $obj->xmin($newval)
- Function: 
- Example : 
+ Function:
+ Example :
  Returns : value of xmin (a scalar)
  Args    : on set, new value (a scalar or undef, optional)
-
 
 =cut
 
@@ -597,11 +578,10 @@ sub xmin {
 
  Title   : xmax
  Usage   : $obj->xmax($newval)
- Function: 
- Example : 
+ Function:
+ Example :
  Returns : value of xmax (a scalar)
  Args    : on set, new value (a scalar or undef, optional)
-
 
 =cut
 
@@ -619,11 +599,10 @@ sub xmax {
 
  Title   : ymin
  Usage   : $obj->ymin($newval)
- Function: 
- Example : 
+ Function:
+ Example :
  Returns : value of ymin (a scalar)
  Args    : on set, new value (a scalar or undef, optional)
-
 
 =cut
 
@@ -641,11 +620,10 @@ sub ymin {
 
  Title   : ymax
  Usage   : $obj->ymax($newval)
- Function: 
- Example : 
+ Function:
+ Example :
  Returns : value of ymax (a scalar)
  Args    : on set, new value (a scalar or undef, optional)
-
 
 =cut
 
@@ -663,10 +641,9 @@ sub ymax {
 
  Title   : xrange
  Usage   : $obj->xrange($newval)
- Function: 
- Example : 
+ Function:
+ Example :
  Returns : value of xrange (a scalar)
-
 
 =cut
 
@@ -680,10 +657,9 @@ sub xrange {
 
  Title   : yrange
  Usage   : $obj->yrange($newval)
- Function: 
- Example : 
+ Function:
+ Example :
  Returns : value of yrange (a scalar)
-
 
 =cut
 
@@ -697,11 +673,10 @@ sub yrange {
 
  Title   : stack
  Usage   : $obj->stack($newval)
- Function: 
- Example : 
+ Function:
+ Example :
  Returns : value of stack (a scalar)
  Args    : on set, new value (a scalar or undef, optional)
-
 
 =cut
 

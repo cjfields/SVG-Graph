@@ -1,5 +1,7 @@
 package SVG::Graph::Glyph;
 
+# VERSION
+
 use strict;
 use Data::Dumper;
 
@@ -9,9 +11,8 @@ use Data::Dumper;
  Usage   :
  Function:
  Example :
- Returns : 
+ Returns :
  Args    :
-
 
 =cut
 
@@ -28,9 +29,8 @@ sub new {
  Usage   :
  Function:
  Example :
- Returns : 
+ Returns :
  Args    :
-
 
 =cut
 
@@ -60,11 +60,10 @@ sub init {
 
  Title   : _style
  Usage   : $obj->_style($newval)
- Function: 
- Example : 
- Returns : 
- Args    : 
-
+ Function:
+ Example :
+ Returns :
+ Args    :
 
 =cut
 
@@ -90,9 +89,8 @@ sub _style {
  Usage   :
  Function:
  Example :
- Returns : 
+ Returns :
  Args    :
-
 
 =cut
 
@@ -106,11 +104,10 @@ sub draw {
 
  Title   : svg
  Usage   : $obj->svg($newval)
- Function: 
- Example : 
+ Function:
+ Example :
  Returns : value of svg (a scalar)
  Args    : on set, new value (a scalar or undef, optional)
-
 
 =cut
 
@@ -125,11 +122,10 @@ sub svg {
 
  Title   : group
  Usage   : $obj->group($newval)
- Function: 
- Example : 
+ Function:
+ Example :
  Returns : value of group (a scalar)
  Args    : on set, new value (a scalar or undef, optional)
-
 
 =cut
 
@@ -144,11 +140,10 @@ sub group {
 
  Title   : xsize
  Usage   : $obj->xsize($newval)
- Function: 
- Example : 
+ Function:
+ Example :
  Returns : value of xsize (a scalar)
  Args    : on set, new value (a scalar or undef, optional)
-
 
 =cut
 
@@ -163,11 +158,10 @@ sub xsize {
 
  Title   : ysize
  Usage   : $obj->ysize($newval)
- Function: 
- Example : 
+ Function:
+ Example :
  Returns : value of ysize (a scalar)
  Args    : on set, new value (a scalar or undef, optional)
-
 
 =cut
 
@@ -182,11 +176,10 @@ sub ysize {
 
  Title   : xoffset
  Usage   : $obj->xoffset($newval)
- Function: 
- Example : 
+ Function:
+ Example :
  Returns : value of xoffset (a scalar)
  Args    : on set, new value (a scalar or undef, optional)
-
 
 =cut
 
@@ -201,11 +194,10 @@ sub xoffset {
 
  Title   : yoffset
  Usage   : $obj->yoffset($newval)
- Function: 
- Example : 
+ Function:
+ Example :
  Returns : value of yoffset (a scalar)
  Args    : on set, new value (a scalar or undef, optional)
-
 
 =cut
 
@@ -222,9 +214,8 @@ sub yoffset {
  Usage   :
  Function:
  Example :
- Returns : 
+ Returns :
  Args    :
-
 
 =cut
 
@@ -240,9 +231,8 @@ sub xscale {
  Usage   :
  Function:
  Example :
- Returns : 
+ Returns :
  Args    :
-
 
 =cut
 
@@ -256,11 +246,10 @@ sub yscale {
 
  Title   : canvas
  Usage   : $obj->canvas($newval)
- Function: 
- Example : 
+ Function:
+ Example :
  Returns : value of canvas (a scalar)
  Args    : on set, new value (a scalar or undef, optional)
-
 
 =cut
 

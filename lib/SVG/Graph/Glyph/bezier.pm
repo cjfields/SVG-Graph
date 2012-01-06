@@ -1,5 +1,7 @@
 package SVG::Graph::Glyph::bezier;
 
+# VERSION
+
 use base SVG::Graph::Glyph;
 use strict;
 use Math::Spline;
@@ -10,9 +12,8 @@ use Math::Spline;
  Usage   :
  Function:
  Example :
- Returns : 
+ Returns :
  Args    :
-
 
 =cut
 
@@ -95,9 +96,8 @@ sub draw {
  Usage   :
  Function:
  Example :
- Returns : 
+ Returns :
  Args    :
-
 
 =cut
 
@@ -131,10 +131,10 @@ sub spline_generate {
             / ( ( $points[$i][0] - $points[ $i - 1 ][0] ) );
 
         $factors[$i]
-            = ( 6 
+            = ( 6
                 * $factors[$i]
                 / ( ( $points[ $i + 1 ][0] - $points[ $i - 1 ][0] ) )
-                - $delta 
+                - $delta
                 * $factors[ $i - 1 ] ) / $temp;
     }
 
@@ -154,9 +154,8 @@ sub spline_generate {
  Usage   :
  Function:
  Example :
- Returns : 
+ Returns :
  Args    :
-
 
 =cut
 
@@ -177,7 +176,7 @@ sub spline_evaluate {
 
     $mult
         = ( $coeffs->[$i] / 2 )
-        + ( $x - $points[$i][0] ) 
+        + ( $x - $points[$i][0] )
         * ( $coeffs->[ $i + 1 ] - $coeffs->[$i] )
         / ( 6 * $delta );
     $mult *= $x - $points[$i][0];
@@ -192,9 +191,8 @@ sub spline_evaluate {
  Usage   :
  Function:
  Example :
- Returns : 
+ Returns :
  Args    :
-
 
 =cut
 
@@ -208,9 +206,8 @@ sub Segment {
  Usage   :
  Function:
  Example :
- Returns : 
+ Returns :
  Args    :
-
 
 =cut
 
@@ -229,9 +226,8 @@ sub VectorSum {
  Usage   :
  Function:
  Example :
- Returns : 
+ Returns :
  Args    :
-
 
 =cut
 
@@ -247,9 +243,8 @@ sub ScalarProd {
  Usage   :
  Function:
  Example :
- Returns : 
+ Returns :
  Args    :
-
 
 =cut
 
@@ -264,9 +259,8 @@ sub Minus {
  Usage   :
  Function:
  Example :
- Returns : 
+ Returns :
  Args    :
-
 
 =cut
 

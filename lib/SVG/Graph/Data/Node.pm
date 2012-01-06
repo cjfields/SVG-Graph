@@ -1,5 +1,7 @@
 package SVG::Graph::Data::Node;
 
+# VERSION
+
 use strict;
 use base qw(Tree::DAG_Node);
 
@@ -9,9 +11,8 @@ use base qw(Tree::DAG_Node);
  Usage   :
  Function:
  Example :
- Returns : 
+ Returns :
  Args    :
-
 
 =cut
 
@@ -28,9 +29,8 @@ sub new {
  Usage   :
  Function:
  Example :
- Returns : 
+ Returns :
  Args    :
-
 
 =cut
 
@@ -57,9 +57,8 @@ sub init {
  Usage   :
  Function:
  Example :
- Returns : 
+ Returns :
  Args    :
-
 
 =cut
 
@@ -81,11 +80,10 @@ sub depth {
 
  Title   : branch_length
  Usage   : $obj->branch_length($newval)
- Function: 
- Example : 
+ Function:
+ Example :
  Returns : value of branch_length (a scalar)
  Args    : on set, new value (a scalar or undef, optional)
-
 
 =cut
 
@@ -100,11 +98,10 @@ sub branch_length {
 
  Title   : branch_type
  Usage   : $obj->branch_type($newval)
- Function: 
- Example : 
+ Function:
+ Example :
  Returns : value of branch_type (a scalar)
  Args    : on set, new value (a scalar or undef, optional)
-
 
 =cut
 
@@ -119,11 +116,10 @@ sub branch_type {
 
  Title   : branch_label
  Usage   : $obj->branch_label($newval)
- Function: 
- Example : 
+ Function:
+ Example :
  Returns : value of branch_label (a scalar)
  Args    : on set, new value (a scalar or undef, optional)
-
 
 =cut
 
@@ -138,11 +134,10 @@ sub branch_label {
 
  Title   : _style
  Usage   : $obj->_style($newval)
- Function: 
- Example : 
- Returns : 
- Args    : 
-
+ Function:
+ Example :
+ Returns :
+ Args    :
 
 =cut
 

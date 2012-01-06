@@ -1,5 +1,7 @@
 package SVG::Graph::Data;
 
+# VERSION
+
 use strict;
 use Statistics::Descriptive;
 use Data::Dumper;
@@ -11,7 +13,6 @@ use Data::Dumper;
  Function: creates a new SVG::Graph::Data object
  Returns : a SVG::Graph::Data object
  Args    : (optional) array of SVG::Graph::Data::Datum objects
-
 
 =cut
 
@@ -28,9 +29,8 @@ sub new {
  Usage   :
  Function:
  Example :
- Returns : 
+ Returns :
  Args    :
-
 
 =cut
 
@@ -49,9 +49,8 @@ sub init {
  Usage   :
  Function:
  Example :
- Returns : 
+ Returns :
  Args    :
-
 
 =cut
 
@@ -68,7 +67,6 @@ sub data {
  Function: adds a Datum object to the current Data object
  Returns : none
  Args    : SVG::Graph::Data::Datum object
-
 
 =cut
 
@@ -99,9 +97,8 @@ sub add_data {
  Usage   :
  Function:
  Example :
- Returns : 
+ Returns :
  Args    :
-
 
 =cut
 
@@ -131,11 +128,10 @@ sub _recalculate_stats {
 
  Title   : xstat
  Usage   : $obj->xstat($newval)
- Function: 
- Example : 
+ Function:
+ Example :
  Returns : value of xstat (a scalar)
  Args    : on set, new value (a scalar or undef, optional)
-
 
 =cut
 
@@ -150,11 +146,10 @@ sub xstat {
 
  Title   : ystat
  Usage   : $obj->ystat($newval)
- Function: 
- Example : 
+ Function:
+ Example :
  Returns : value of ystat (a scalar)
  Args    : on set, new value (a scalar or undef, optional)
-
 
 =cut
 
@@ -169,11 +164,10 @@ sub ystat {
 
  Title   : zstat
  Usage   : $obj->zstat($newval)
- Function: 
- Example : 
+ Function:
+ Example :
  Returns : value of zstat (a scalar)
  Args    : on set, new value (a scalar or undef, optional)
-
 
 =cut
 
@@ -236,11 +230,10 @@ sub zpercentile {
 
  Title   : is_changed
  Usage   : $obj->is_changed($newval)
- Function: 
- Example : 
+ Function:
+ Example :
  Returns : value of is_changed (a scalar)
  Args    : on set, new value (a scalar or undef, optional)
-
 
 =cut
 
@@ -255,11 +248,10 @@ sub is_changed {
 
  Title   : svg
  Usage   : $obj->svg($newval)
- Function: 
- Example : 
+ Function:
+ Example :
  Returns : value of svg (a scalar)
  Args    : on set, new value (a scalar or undef, optional)
-
 
 =cut
 

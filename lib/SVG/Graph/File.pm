@@ -1,5 +1,7 @@
 package SVG::Graph::File;
 
+# VERSION
+
 use strict;
 
 =head2 new
@@ -8,9 +10,8 @@ use strict;
  Usage   :
  Function:
  Example :
- Returns : 
+ Returns :
  Args    :
-
 
 =cut
 
@@ -27,9 +28,8 @@ sub new {
  Usage   :
  Function:
  Example :
- Returns : 
+ Returns :
  Args    :
-
 
 =cut
 
@@ -52,9 +52,8 @@ sub init {
  Usage   :
  Function:
  Example :
- Returns : 
+ Returns :
  Args    :
-
 
 =cut
 
@@ -70,9 +69,8 @@ sub read_data {
  Usage   :
  Function:
  Example :
- Returns : 
+ Returns :
  Args    :
-
 
 =cut
 
@@ -86,11 +84,10 @@ sub write_data {
 
  Title   : _style
  Usage   : $obj->_style($newval)
- Function: 
- Example : 
- Returns : 
- Args    : 
-
+ Function:
+ Example :
+ Returns :
+ Args    :
 
 =cut
 

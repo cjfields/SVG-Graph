@@ -1,5 +1,7 @@
 package SVG::Graph;
 
+# VERSION
+
 =head1 NAME
 
 SVG::Graph - Visualize your data in Scalable Vector Graphics (SVG) format.
@@ -65,7 +67,7 @@ well as N-ary rooted trees.  Data may be represented as:
  Tree					x
 
 SVG::Graph 0.02 is a pre-alpha release. Keep in mind that many of the
-glyphs are not very robust. 
+glyphs are not very robust.
 
 =head1 PLOTTING
 
@@ -139,7 +141,6 @@ use SVG::Graph::Frame;
 
 use Data::Dumper;
 use strict;
-our $VERSION = '0.02';
 
 =head2 new
 
@@ -149,10 +150,9 @@ our $VERSION = '0.02';
                                        margin=>20);
  Function: creates a new SVG::Graph object
  Returns : a SVG::Graph object
- Args    : width => the width of the SVG 
+ Args    : width => the width of the SVG
            height => the height of the SVG
            margin => margin for the root frame
-
 
 =cut
 
@@ -170,9 +170,8 @@ sub new {
  Usage   :
  Function:
  Example :
- Returns : 
+ Returns :
  Args    :
-
 
 =cut
 
@@ -200,11 +199,10 @@ sub init {
 
  Title   : width
  Usage   : $obj->width($newval)
- Function: 
- Example : 
+ Function:
+ Example :
  Returns : value of width (a scalar)
  Args    : on set, new value (a scalar or undef, optional)
-
 
 =cut
 
@@ -219,11 +217,10 @@ sub width {
 
  Title   : height
  Usage   : $obj->height($newval)
- Function: 
- Example : 
+ Function:
+ Example :
  Returns : value of height (a scalar)
  Args    : on set, new value (a scalar or undef, optional)
-
 
 =cut
 
@@ -238,11 +235,10 @@ sub height {
 
  Title   : margin
  Usage   : $obj->margin($newval)
- Function: 
- Example : 
+ Function:
+ Example :
  Returns : value of margin (a scalar)
  Args    : on set, new value (a scalar or undef, optional)
-
 
 =cut
 
@@ -257,11 +253,10 @@ sub margin {
 
  Title   : svg
  Usage   : $obj->svg($newval)
- Function: 
- Example : 
+ Function:
+ Example :
  Returns : value of svg (a scalar)
  Args    : on set, new value (a scalar or undef, optional)
-
 
 =cut
 
@@ -317,9 +312,8 @@ sub add_frame {
  Usage   : get/set
  Function:
  Example :
- Returns : 
+ Returns :
  Args    :
-
 
 =cut
 
@@ -333,11 +327,10 @@ sub frames {
 
  Title   : xoffset
  Usage   : $obj->xoffset($newval)
- Function: 
- Example : 
+ Function:
+ Example :
  Returns : value of xoffset (a scalar)
  Args    : on set, new value (a scalar or undef, optional)
-
 
 =cut
 
@@ -352,11 +345,10 @@ sub xoffset {
 
  Title   : yoffset
  Usage   : $obj->yoffset($newval)
- Function: 
- Example : 
+ Function:
+ Example :
  Returns : value of yoffset (a scalar)
  Args    : on set, new value (a scalar or undef, optional)
-
 
 =cut
 
@@ -371,10 +363,9 @@ sub yoffset {
 
  Title   : draw
  Usage   : $graph=>draw
- Function: depends on child glyph implementations 
+ Function: depends on child glyph implementations
  Returns : xmlifyied SVG object
  Args    : none
-
 
 =cut
 

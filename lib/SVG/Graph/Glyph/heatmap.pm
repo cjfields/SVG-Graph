@@ -1,5 +1,7 @@
 package SVG::Graph::Glyph::heatmap;
 
+# VERSION
+
 use base SVG::Graph::Glyph;
 use strict;
 
@@ -9,9 +11,8 @@ use strict;
  Usage   :
  Function:
  Example :
- Returns : 
+ Returns :
  Args    :
-
 
 =cut
 
@@ -183,11 +184,10 @@ sub draw {
 
  Title   : rgb_l
  Usage   : $obj->rgb_l($newval)
- Function: 
- Example : 
+ Function:
+ Example :
  Returns : value of rgb_l (a scalar)
  Args    : on set, new value (a scalar or undef, optional)
-
 
 =cut
 
@@ -202,11 +202,10 @@ sub rgb_l {
 
  Title   : rgb_m
  Usage   : $obj->rgb_m($newval)
- Function: 
- Example : 
+ Function:
+ Example :
  Returns : value of rgb_m (a scalar)
  Args    : on set, new value (a scalar or undef, optional)
-
 
 =cut
 
@@ -221,11 +220,10 @@ sub rgb_m {
 
  Title   : rgb_h
  Usage   : $obj->rgb_h($newval)
- Function: 
- Example : 
+ Function:
+ Example :
  Returns : value of rgb_h (a scalar)
  Args    : on set, new value (a scalar or undef, optional)
-
 
 =cut
 
