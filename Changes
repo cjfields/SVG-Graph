@@ -4,8 +4,8 @@ Revision history for Perl extension SVG::Graph.
   - Clean up to squash modern perl errors [cjfields]
   - Remove redundant Data modules [cjfields]
   - Set up for Dist::Zilla releases [cjfields]
-  - Modernize tests [cjfields].  These will require 
-    more coverage at some point...
+  - Modernize tests.  These will require 
+    more coverage at some point... [cjfields]
   - Set license to Artistic 2.0, per original README
     [cjfields]
 
