@@ -1,12 +1,6 @@
 use strict;
 
-BEGIN {
-    eval { require Test; };
-    if ($@) {
-        use lib 't';
-    }
-    use Test::More;
-}
+use Test::More;
 
 use SVG::Graph;
 use SVG::Graph::Data;
