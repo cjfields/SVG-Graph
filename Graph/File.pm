@@ -14,12 +14,11 @@ use strict;
 
 =cut
 
-sub new
-{
-   my ($class,%args) = @_;
-   my $self = bless {}, $class;
-   $self->init(%args);
-   return($self);
+sub new {
+    my ( $class, %args ) = @_;
+    my $self = bless {}, $class;
+    $self->init(%args);
+    return ($self);
 }
 
 =head2 init
@@ -34,19 +33,18 @@ sub new
 
 =cut
 
-sub init
-{
-  my ($self, %args) = @_;
-  foreach my $arg (keys %args){
-	my $meth = $arg;
-	if($self->can($meth)){
-	  $self->$meth($args{$arg});
-	} else {
-	  $self->_style($arg => $args{$arg});
-	}
-  }
+sub init {
+    my ( $self, %args ) = @_;
+    foreach my $arg ( keys %args ) {
+        my $meth = $arg;
+        if ( $self->can($meth) ) {
+            $self->$meth( $args{$arg} );
+        }
+        else {
+            $self->_style( $arg => $args{$arg} );
+        }
+    }
 }
-
 
 =head2 read_data
 
@@ -60,10 +58,10 @@ sub init
 
 =cut
 
-sub read_data{
-   my ($self,@args) = @_;
+sub read_data {
+    my ( $self, @args ) = @_;
 
-   die "method undefined by ".__PACKAGE__;
+    die "method undefined by " . __PACKAGE__;
 }
 
 =head2 write_data
@@ -78,12 +76,11 @@ sub read_data{
 
 =cut
 
-sub write_data{
-   my ($self,@args) = @_;
+sub write_data {
+    my ( $self, @args ) = @_;
 
-   die "method undefined by ".__PACKAGE__;
+    die "method undefined by " . __PACKAGE__;
 }
-
 
 =head2 _style
 
@@ -97,19 +94,20 @@ sub write_data{
 
 =cut
 
-sub _style
-{
+sub _style {
     my $self = shift;
-	my($key,$val) = @_;
+    my ( $key, $val ) = @_;
 
-	if(defined($key) and not defined($val)){
-	  return $self->{'_style'}{$key};
-	} elsif(defined($key) and defined($val)){
-	  $self->{'_style'}{$key} = $val;
-	  return $val;
-	} else {
-	  return $self->{'_style'} ? %{$self->{'_style'}} : ();
-	}
+    if ( defined($key) and not defined($val) ) {
+        return $self->{'_style'}{$key};
+    }
+    elsif ( defined($key) and defined($val) ) {
+        $self->{'_style'}{$key} = $val;
+        return $val;
+    }
+    else {
+        return $self->{'_style'} ? %{ $self->{'_style'} } : ();
+    }
 }
 
 1;

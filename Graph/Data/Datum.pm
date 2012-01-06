@@ -1,6 +1,7 @@
 package SVG::Graph::Data::Datum;
 
 use strict;
+
 #use overload
 #  '""'  => \&label,
 #  '<=>' => sub { my($x,$y) = &check; $x <=> $y },
@@ -23,10 +24,10 @@ use strict;
 =cut
 
 sub new {
-  my($class, %args) = @_;
-  my $self = bless {}, $class;
-  $self->init(%args);
-  return $self;
+    my ( $class, %args ) = @_;
+    my $self = bless {}, $class;
+    $self->init(%args);
+    return $self;
 }
 
 =head2 init
@@ -42,10 +43,10 @@ sub new {
 =cut
 
 sub init {
-  my($self, %args) = @_;
-  foreach my $arg (keys %args) {
-	$self->$arg($args{$arg});
-  }
+    my ( $self, %args ) = @_;
+    foreach my $arg ( keys %args ) {
+        $self->$arg( $args{$arg} );
+    }
 }
 
 =head2 x
@@ -61,9 +62,9 @@ sub init {
 =cut
 
 sub x {
-  my($self,$arg) = @_;
-  $self->{x} = $arg if defined $arg;
-  return $self->{x};
+    my ( $self, $arg ) = @_;
+    $self->{x} = $arg if defined $arg;
+    return $self->{x};
 }
 
 =head2 y
@@ -79,9 +80,9 @@ sub x {
 =cut
 
 sub y {
-  my($self,$arg) = @_;
-  $self->{y} = $arg if defined $arg;
-  return $self->{y};
+    my ( $self, $arg ) = @_;
+    $self->{y} = $arg if defined $arg;
+    return $self->{y};
 }
 
 =head2 z
@@ -97,9 +98,9 @@ sub y {
 =cut
 
 sub z {
-  my($self,$arg) = @_;
-  $self->{z} = $arg if defined $arg;
-  return $self->{z};
+    my ( $self, $arg ) = @_;
+    $self->{z} = $arg if defined $arg;
+    return $self->{z};
 }
 
 =head2 label
@@ -115,9 +116,9 @@ sub z {
 =cut
 
 sub label {
-  my($self,$arg) = @_;
-  $self->{label} = $arg if defined $arg;
-  return $self->{label};
+    my ( $self, $arg ) = @_;
+    $self->{label} = $arg if defined $arg;
+    return $self->{label};
 }
 
 =head2 check
@@ -133,12 +134,12 @@ sub label {
 =cut
 
 sub check {
-  my($x,$y) = @_;
+    my ( $x, $y ) = @_;
 
-  $x = $x->x if ref $x eq __PACKAGE__;
-  $y = $y->x if ref $y eq __PACKAGE__;
+    $x = $x->x if ref $x eq __PACKAGE__;
+    $y = $y->x if ref $y eq __PACKAGE__;
 
-  return($x,$y);
+    return ( $x, $y );
 }
 
 1;

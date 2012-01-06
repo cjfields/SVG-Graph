@@ -155,12 +155,12 @@ our $VERSION = '0.02';
 
 =cut
 
-sub new{
-   my ($class,@args) = @_;
+sub new {
+    my ( $class, @args ) = @_;
 
-   my $self = bless {}, $class;
-   $self->init(@args);
-   return $self;
+    my $self = bless {}, $class;
+    $self->init(@args);
+    return $self;
 }
 
 =head2 init
@@ -175,18 +175,24 @@ sub new{
 
 =cut
 
-sub init{
-  my($self, %args) = @_;
+sub init {
+    my ( $self, %args ) = @_;
 
-  foreach my $arg (keys %args){
-	my $meth = $arg;
-        $self->$meth($args{$arg});
-  }
+    foreach my $arg ( keys %args ) {
+        my $meth = $arg;
+        $self->$meth( $args{$arg} );
+    }
 
-  #allow passing of an existing SVG
-  if(!$self->svg){
-	$self->svg(SVG->new(xmlns=>"http://www.w3.org/2000/svg",width=>$self->width,height=>$self->height));
-  }
+    #allow passing of an existing SVG
+    if ( !$self->svg ) {
+        $self->svg(
+            SVG->new(
+                xmlns  => "http://www.w3.org/2000/svg",
+                width  => $self->width,
+                height => $self->height
+            )
+        );
+    }
 }
 
 =head2 width
@@ -201,7 +207,7 @@ sub init{
 
 =cut
 
-sub width{
+sub width {
     my $self = shift;
 
     return $self->{'width'} = shift if @_;
@@ -220,7 +226,7 @@ sub width{
 
 =cut
 
-sub height{
+sub height {
     my $self = shift;
 
     return $self->{'height'} = shift if @_;
@@ -239,7 +245,7 @@ sub height{
 
 =cut
 
-sub margin{
+sub margin {
     my $self = shift;
 
     return $self->{'margin'} = shift if @_;
@@ -258,7 +264,7 @@ sub margin{
 
 =cut
 
-sub svg{
+sub svg {
     my $self = shift;
 
     return $self->{'svg'} = shift if @_;
@@ -280,27 +286,28 @@ sub svg{
 
 =cut
 
-sub add_frame{
-   my ($self,%args) = @_;
+sub add_frame {
+    my ( $self, %args ) = @_;
 
-   my $margin = $self->margin || 0;
-   my $height = $self->height || 0;
-   my $width  = $self->width  || 0;
-   my $xoffset = $self->xoffset || 0;
-   my $yoffset = $self->yoffset || 0;
+    my $margin  = $self->margin  || 0;
+    my $height  = $self->height  || 0;
+    my $width   = $self->width   || 0;
+    my $xoffset = $self->xoffset || 0;
+    my $yoffset = $self->yoffset || 0;
 
-   my $frame = SVG::Graph::Frame->new(svg=>$self,
-									  xoffset=>$xoffset + $margin,
-									  yoffset=>$yoffset + $margin,
-									  xsize=>$width  - (2 * $margin),
-									  ysize=>$height - (2 * $margin),
-									  frame_transform=>$args{frame_transform}
-									 );
+    my $frame = SVG::Graph::Frame->new(
+        svg     => $self,
+        xoffset => $xoffset + $margin,
+        yoffset => $yoffset + $margin,
+        xsize => $width -  ( 2 * $margin ),
+        ysize => $height - ( 2 * $margin ),
+        frame_transform => $args{frame_transform}
+    );
 
-   #print STDERR Dumper($frame);
+    #print STDERR Dumper($frame);
 
-   push @{$self->{frames}}, $frame;
-   return $frame;
+    push @{ $self->{frames} }, $frame;
+    return $frame;
 }
 
 =head2 frames
@@ -315,10 +322,10 @@ sub add_frame{
 
 =cut
 
-sub frames{
-   my ($self,@args) = @_;
+sub frames {
+    my ( $self, @args ) = @_;
 
-   return $self->{frames} ? @{$self->{frames}} : ();
+    return $self->{frames} ? @{ $self->{frames} } : ();
 }
 
 =head2 xoffset
@@ -333,7 +340,7 @@ sub frames{
 
 =cut
 
-sub xoffset{
+sub xoffset {
     my $self = shift;
 
     return $self->{'xoffset'} = shift if @_;
@@ -352,7 +359,7 @@ sub xoffset{
 
 =cut
 
-sub yoffset{
+sub yoffset {
     my $self = shift;
 
     return $self->{'yoffset'} = shift if @_;
@@ -370,16 +377,15 @@ sub yoffset{
 
 =cut
 
-sub draw{
-   my ($self,@args) = @_;
+sub draw {
+    my ( $self, @args ) = @_;
 
-   foreach my $frame ($self->frames){
-	 $frame->draw;
-   }
+    foreach my $frame ( $self->frames ) {
+        $frame->draw;
+    }
 
-   return $self->svg->xmlify;
+    return $self->svg->xmlify;
 }
-
 
 1;
 __END__

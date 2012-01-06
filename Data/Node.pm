@@ -16,10 +16,10 @@ use base qw(Tree::DAG_Node);
 =cut
 
 sub new {
-  my($class, %args) = @_;
-  my $self = bless {}, $class;
-  $self->init(%args);
-  return $self;
+    my ( $class, %args ) = @_;
+    my $self = bless {}, $class;
+    $self->init(%args);
+    return $self;
 }
 
 =head2 init
@@ -35,18 +35,19 @@ sub new {
 =cut
 
 sub init {
-  my($self, %args) = @_;
+    my ( $self, %args ) = @_;
 
-  $self->SUPER::_init;
+    $self->SUPER::_init;
 
-  foreach my $arg (keys %args) {
-	my $meth = $arg;
-	if($self->can($meth)){
-	  $self->$meth($args{$arg});
-	} else {
-	  $self->_style($arg => $args{$arg});
-	}
-  }
+    foreach my $arg ( keys %args ) {
+        my $meth = $arg;
+        if ( $self->can($meth) ) {
+            $self->$meth( $args{$arg} );
+        }
+        else {
+            $self->_style( $arg => $args{$arg} );
+        }
+    }
 
 }
 
@@ -62,18 +63,18 @@ sub init {
 
 =cut
 
-sub depth{
-   my ($self,@args) = @_;
+sub depth {
+    my ( $self, @args ) = @_;
 
-   my $depth = $self->branch_length;
+    my $depth = $self->branch_length;
 
-   my $maxdepth = 0;
-   foreach my $daughter ($self->daughters){
-	 my $ddepth = $daughter->depth;
-	 $maxdepth = $ddepth > $maxdepth ? $ddepth : $maxdepth;
-   }
+    my $maxdepth = 0;
+    foreach my $daughter ( $self->daughters ) {
+        my $ddepth = $daughter->depth;
+        $maxdepth = $ddepth > $maxdepth ? $ddepth : $maxdepth;
+    }
 
-   return $depth + $maxdepth;
+    return $depth + $maxdepth;
 }
 
 =head2 branch_length
@@ -88,7 +89,7 @@ sub depth{
 
 =cut
 
-sub branch_length{
+sub branch_length {
     my $self = shift;
 
     return $self->{'branch_length'} = shift if @_;
@@ -107,7 +108,7 @@ sub branch_length{
 
 =cut
 
-sub branch_type{
+sub branch_type {
     my $self = shift;
 
     return $self->{'branch_type'} = shift if @_;
@@ -126,7 +127,7 @@ sub branch_type{
 
 =cut
 
-sub branch_label{
+sub branch_label {
     my $self = shift;
 
     return $self->{'branch_label'} = shift if @_;
@@ -145,18 +146,20 @@ sub branch_label{
 
 =cut
 
-sub _style{
+sub _style {
     my $self = shift;
-	my($key,$val) = @_;
+    my ( $key, $val ) = @_;
 
-	if(defined($key) and not defined($val)){
-	  return $self->{'_style'}{$key};
-	} elsif(defined($key) and defined($val)){
-	  $self->{'_style'}{$key} = $val;
-	  return $val;
-	} else {
-	  return $self->{'_style'} ? %{$self->{'_style'}} : ();
-	}
+    if ( defined($key) and not defined($val) ) {
+        return $self->{'_style'}{$key};
+    }
+    elsif ( defined($key) and defined($val) ) {
+        $self->{'_style'}{$key} = $val;
+        return $val;
+    }
+    else {
+        return $self->{'_style'} ? %{ $self->{'_style'} } : ();
+    }
 }
 
 1;

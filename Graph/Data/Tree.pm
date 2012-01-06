@@ -16,10 +16,10 @@ use SVG::Graph::Data::Node;
 =cut
 
 sub new {
-  my($class, @args) = @_;
-  my $self = bless {}, $class;
-  $self->init(@args);
-  return $self;
+    my ( $class, @args ) = @_;
+    my $self = bless {}, $class;
+    $self->init(@args);
+    return $self;
 }
 
 =head2 init
@@ -35,14 +35,14 @@ sub new {
 =cut
 
 sub init {
-  my($self, %args) = @_;
+    my ( $self, %args ) = @_;
 
-  $self->root(SVG::Graph::Data::Node->new);
-  $self->root->name('root');
+    $self->root( SVG::Graph::Data::Node->new );
+    $self->root->name('root');
 
-  foreach my $arg (keys %args) {
-	$self->$arg($args{$arg});
-  }
+    foreach my $arg ( keys %args ) {
+        $self->$arg( $args{$arg} );
+    }
 }
 
 =head2 depth
@@ -57,10 +57,10 @@ sub init {
 
 =cut
 
-sub depth{
-   my ($self,@args) = @_;
+sub depth {
+    my ( $self, @args ) = @_;
 
-   return $self->root->depth;
+    return $self->root->depth;
 }
 
 =head2 root
@@ -75,7 +75,7 @@ sub depth{
 
 =cut
 
-sub root{
+sub root {
     my $self = shift;
 
     return $self->{'root'} = shift if @_;
@@ -94,10 +94,10 @@ sub root{
 
 =cut
 
-sub new_node{
-   my ($self,@args) = @_;
+sub new_node {
+    my ( $self, @args ) = @_;
 
-   return SVG::Graph::Data::Node->new(@args);
+    return SVG::Graph::Data::Node->new(@args);
 }
 
 1;

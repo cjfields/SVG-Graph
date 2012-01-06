@@ -16,10 +16,10 @@ use Data::Dumper;
 =cut
 
 sub new {
-  my($class, %args) = @_;
-  my $self = bless {}, $class;
-  $self->init(%args);
-  return $self;
+    my ( $class, %args ) = @_;
+    my $self = bless {}, $class;
+    $self->init(%args);
+    return $self;
 }
 
 =head2 init
@@ -35,23 +35,25 @@ sub new {
 =cut
 
 sub init {
-  my($self, %args) = @_;
+    my ( $self, %args ) = @_;
 
-  my $id = sprintf("%07d",int(rand(9999999)));
-  my($glyphname) = ref($self) =~ /::([^:]+)$/;
+    my $id = sprintf( "%07d", int( rand(9999999) ) );
+    my ($glyphname) = ref($self) =~ /::([^:]+)$/;
 
+    foreach my $arg ( keys %args ) {
+        my $meth = $arg;
 
-  foreach my $arg (keys %args){
-	my $meth = $arg;
-	#caveat, all constructor args will now pass
-	if($self->can($meth)){
-	  $self->$meth($args{$arg});
-	} else {
-	  $self->_style($arg => $args{$arg});
-	}
-  }
+        #caveat, all constructor args will now pass
+        if ( $self->can($meth) ) {
+            $self->$meth( $args{$arg} );
+        }
+        else {
+            $self->_style( $arg => $args{$arg} );
+        }
+    }
 
-  $self->canvas($self->svg->group(id=>"$glyphname$id")) unless $self->canvas;
+    $self->canvas( $self->svg->group( id => "$glyphname$id" ) )
+        unless $self->canvas;
 }
 
 =head2 _style
@@ -66,18 +68,20 @@ sub init {
 
 =cut
 
-sub _style{
+sub _style {
     my $self = shift;
-	my($key,$val) = @_;
+    my ( $key, $val ) = @_;
 
-	if(defined($key) and not defined($val)){
-	  return $self->{'_style'}{$key};
-	} elsif(defined($key) and defined($val)){
-	  $self->{'_style'}{$key} = $val;
-	  return $val;
-	} else {
-	  return $self->{'_style'} ? %{$self->{'_style'}} : ();
-	}
+    if ( defined($key) and not defined($val) ) {
+        return $self->{'_style'}{$key};
+    }
+    elsif ( defined($key) and defined($val) ) {
+        $self->{'_style'}{$key} = $val;
+        return $val;
+    }
+    else {
+        return $self->{'_style'} ? %{ $self->{'_style'} } : ();
+    }
 }
 
 =head2 draw
@@ -92,10 +96,10 @@ sub _style{
 
 =cut
 
-sub draw{
-   my ($self,@args) = @_;
+sub draw {
+    my ( $self, @args ) = @_;
 
-   die "method undefined by ".__PACKAGE__;
+    die "method undefined by " . __PACKAGE__;
 }
 
 =head2 svg
@@ -110,7 +114,7 @@ sub draw{
 
 =cut
 
-sub svg{
+sub svg {
     my $self = shift;
 
     return $self->{'svg'} = shift if @_;
@@ -129,7 +133,7 @@ sub svg{
 
 =cut
 
-sub group{
+sub group {
     my $self = shift;
 
     return $self->{'group'} = shift if @_;
@@ -148,7 +152,7 @@ sub group{
 
 =cut
 
-sub xsize{
+sub xsize {
     my $self = shift;
 
     return $self->{'xsize'} = shift if @_;
@@ -167,7 +171,7 @@ sub xsize{
 
 =cut
 
-sub ysize{
+sub ysize {
     my $self = shift;
 
     return $self->{'ysize'} = shift if @_;
@@ -186,7 +190,7 @@ sub ysize{
 
 =cut
 
-sub xoffset{
+sub xoffset {
     my $self = shift;
 
     return $self->{'xoffset'} = shift if @_;
@@ -205,7 +209,7 @@ sub xoffset{
 
 =cut
 
-sub yoffset{
+sub yoffset {
     my $self = shift;
 
     return $self->{'yoffset'} = shift if @_;
@@ -224,10 +228,10 @@ sub yoffset{
 
 =cut
 
-sub xscale{
-   my ($self,@args) = @_;
+sub xscale {
+    my ( $self, @args ) = @_;
 
-   return $self->xsize / $self->group->xrange;
+    return $self->xsize / $self->group->xrange;
 }
 
 =head2 yscale
@@ -242,10 +246,10 @@ sub xscale{
 
 =cut
 
-sub yscale{
-   my ($self,@args) = @_;
+sub yscale {
+    my ( $self, @args ) = @_;
 
-   return $self->ysize / $self->group->yrange;
+    return $self->ysize / $self->group->yrange;
 }
 
 =head2 canvas
@@ -260,12 +264,11 @@ sub yscale{
 
 =cut
 
-sub canvas{
+sub canvas {
     my $self = shift;
 
     return $self->{'canvas'} = shift if @_;
     return $self->{'canvas'};
 }
-
 
 1;

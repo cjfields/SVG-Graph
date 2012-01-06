@@ -15,156 +15,210 @@ use strict;
 
 =cut
 
-sub draw{
-   my ($self,@args) = @_;
+sub draw {
+    my ( $self, @args ) = @_;
 
-   my $id = 'n'.sprintf("%07d",int(rand(9999999)));
-   #my $frame_transform = $self->frame_transform;
-   my $group = $self->svg->group(id=>"axis$id");
+    my $id = 'n' . sprintf( "%07d", int( rand(9999999) ) );
 
-   my $xscale = $self->xsize / $self->group->xrange;
-   my $yscale = $self->ysize / $self->group->yrange;
+    #my $frame_transform = $self->frame_transform;
+    my $group = $self->svg->group( id => "axis$id" );
 
-   my $xintercept = $self->x_intercept || 0;
-   my $yintercept = $self->y_intercept || 0;
+    my $xscale = $self->xsize / $self->group->xrange;
+    my $yscale = $self->ysize / $self->group->yrange;
 
-   #draw x axis line
-   $group->line(x1=>$self->xoffset,
-				y1=>$self->yoffset + $self->ysize - ($yintercept * $yscale),
-				x2=>$self->xoffset + $self->xsize,
-				y2=>$self->yoffset + $self->ysize - ($yintercept * $yscale),
-				style=>{$self->_style}
-			   );
+    my $xintercept = $self->x_intercept || 0;
+    my $yintercept = $self->y_intercept || 0;
 
-   #draw y axis line
-   $group->line(x1=>$self->xoffset + ($xintercept * $xscale),
-				y1=>$self->yoffset,
-				x2=>$self->xoffset + ($xintercept * $xscale),
-				y2=>$self->yoffset + $self->ysize,
-				style=>{$self->_style}
-			   );
+    #draw x axis line
+    $group->line(
+        x1    => $self->xoffset,
+        y1    => $self->yoffset + $self->ysize - ( $yintercept * $yscale ),
+        x2    => $self->xoffset + $self->xsize,
+        y2    => $self->yoffset + $self->ysize - ( $yintercept * $yscale ),
+        style => { $self->_style }
+    );
 
-   my @x_tick_labels = ();
-   my @x_intertick_labels = ();
-   if($self->x_tick_labels){
-	@x_tick_labels = @{ $self->x_tick_labels };
-   }
-   if($self->x_intertick_labels){
-	@x_intertick_labels = @{ $self->x_intertick_labels };
-   }
+    #draw y axis line
+    $group->line(
+        x1 => $self->xoffset + ( $xintercept * $xscale ),
+        y1 => $self->yoffset,
+        x2 => $self->xoffset + ( $xintercept * $xscale ),
+        y2 => $self->yoffset + $self->ysize,
+        style => { $self->_style }
+    );
 
-   my @y_tick_labels = ();
-   my @y_intertick_labels = ();
-   if($self->y_tick_labels){
-	@y_tick_labels = @{ $self->y_tick_labels };
-   }
-   if($self->y_intertick_labels){
-	@y_intertick_labels = @{ $self->y_intertick_labels };
-   }
+    my @x_tick_labels      = ();
+    my @x_intertick_labels = ();
+    if ( $self->x_tick_labels ) {
+        @x_tick_labels = @{ $self->x_tick_labels };
+    }
+    if ( $self->x_intertick_labels ) {
+        @x_intertick_labels = @{ $self->x_intertick_labels };
+    }
 
-   #x ticks
-   if($self->x_absolute_ticks and $self->x_fractional_ticks){
-	 die "x axis can't have both absolute and fractional ticks";
-   } elsif($self->x_absolute_ticks){
+    my @y_tick_labels      = ();
+    my @y_intertick_labels = ();
+    if ( $self->y_tick_labels ) {
+        @y_tick_labels = @{ $self->y_tick_labels };
+    }
+    if ( $self->y_intertick_labels ) {
+        @y_intertick_labels = @{ $self->y_intertick_labels };
+    }
 
-	 for(my $tick = $self->group->xmin ; $tick <= $self->group->xmax; $tick += $self->x_absolute_ticks){
-	   my $tickpos = ($tick - $self->group->xmin) * $xscale;
+    #x ticks
+    if ( $self->x_absolute_ticks and $self->x_fractional_ticks ) {
+        die "x axis can't have both absolute and fractional ticks";
+    }
+    elsif ( $self->x_absolute_ticks ) {
 
-	   $group->line(x1=>$self->xoffset+$tickpos,
-					y1=>$self->yoffset+$self->ysize - ($self->y_intercept * $yscale),
-					x2=>$self->xoffset+$tickpos,
-					y2=>$self->yoffset+$self->ysize - ($self->y_intercept * $yscale)+($self->group->_parent_svg->margin/8),
-					style=>{$self->_style}
-				   );
+        for (
+            my $tick = $self->group->xmin;
+            $tick <= $self->group->xmax;
+            $tick += $self->x_absolute_ticks
+            )
+        {
+            my $tickpos = ( $tick - $self->group->xmin ) * $xscale;
 
+            $group->line(
+                x1 => $self->xoffset + $tickpos,
+                y1 => $self->yoffset 
+                    + $self->ysize
+                    - ( $self->y_intercept * $yscale ),
+                x2 => $self->xoffset + $tickpos,
+                y2 => $self->yoffset 
+                    + $self->ysize
+                    - ( $self->y_intercept * $yscale )
+                    + ( $self->group->_parent_svg->margin / 8 ),
+                style => { $self->_style }
+            );
 
-	   #tick label
-	   my $x_tick_label = shift @x_tick_labels;
-	   my $x = $self->xoffset + $tickpos;
-	   my $y = $self->yoffset+$self->ysize - ($self->y_intercept * $yscale)+($self->group->_parent_svg->margin/4);
-	   $group->text(
-					x=>$x,
-					y=>$y,
-					transform=>"rotate(90,$x,$y)",
-				   )->cdata($x_tick_label);
+            #tick label
+            my $x_tick_label = shift @x_tick_labels;
+            my $x            = $self->xoffset + $tickpos;
+            my $y
+                = $self->yoffset 
+                + $self->ysize
+                - ( $self->y_intercept * $yscale )
+                + ( $self->group->_parent_svg->margin / 4 );
+            $group->text(
+                x         => $x,
+                y         => $y,
+                transform => "rotate(90,$x,$y)",
+            )->cdata($x_tick_label);
 
-	   #intertick label
-	   my $x_intertick_label = shift @x_intertick_labels;
-	   $tickpos = (((2 * $tick) - 1) / 2) * $xscale;
-	   $x = $self->xoffset + $tickpos;
-	   $group->text(
-					x=>$x,
-					y=>$y,
-					transform=>"rotate(90,$x,$y)",
-				   )->cdata($x_intertick_label);
+            #intertick label
+            my $x_intertick_label = shift @x_intertick_labels;
+            $tickpos = ( ( ( 2 * $tick ) - 1 ) / 2 ) * $xscale;
+            $x = $self->xoffset + $tickpos;
+            $group->text(
+                x         => $x,
+                y         => $y,
+                transform => "rotate(90,$x,$y)",
+            )->cdata($x_intertick_label);
 
-	 }
-   } elsif($self->x_fractional_ticks){
-	 my $inc = $self->group->xrange / $self->x_fractional_ticks;
-	 for(my $tick = $self->group->xmin ; $tick <= $self->group->xmax; $tick += $inc){
-	   my $tickpos = ($tick - $self->group->xmin) * $xscale;
+        }
+    }
+    elsif ( $self->x_fractional_ticks ) {
+        my $inc = $self->group->xrange / $self->x_fractional_ticks;
+        for (
+            my $tick = $self->group->xmin;
+            $tick <= $self->group->xmax;
+            $tick += $inc
+            )
+        {
+            my $tickpos = ( $tick - $self->group->xmin ) * $xscale;
 
-	   $group->line(x1=>$self->xoffset+$tickpos,
-					y1=>$self->yoffset+$self->ysize - ($self->y_intercept * $yscale),
-					x2=>$self->xoffset+$tickpos,
-					y2=>$self->yoffset+$self->ysize - ($self->y_intercept * $yscale)+($self->group->_parent_svg->margin/8),
-					style=>{$self->_style}
-				   );
+            $group->line(
+                x1 => $self->xoffset + $tickpos,
+                y1 => $self->yoffset 
+                    + $self->ysize
+                    - ( $self->y_intercept * $yscale ),
+                x2 => $self->xoffset + $tickpos,
+                y2 => $self->yoffset 
+                    + $self->ysize
+                    - ( $self->y_intercept * $yscale )
+                    + ( $self->group->_parent_svg->margin / 8 ),
+                style => { $self->_style }
+            );
 
-	 }
-   }
+        }
+    }
 
-   #y ticks
-   if($self->y_absolute_ticks and $self->y_fractional_ticks){
-	 die "y axis can't have both absolute and fractional ticks";
-   } elsif($self->y_absolute_ticks){
-	 for(my $tick = $self->group->ymin ; $tick <= $self->group->ymax; $tick += $self->y_absolute_ticks){
-	   my $tickpos = ($tick - $self->group->ymin) * $yscale;
+    #y ticks
+    if ( $self->y_absolute_ticks and $self->y_fractional_ticks ) {
+        die "y axis can't have both absolute and fractional ticks";
+    }
+    elsif ( $self->y_absolute_ticks ) {
+        for (
+            my $tick = $self->group->ymin;
+            $tick <= $self->group->ymax;
+            $tick += $self->y_absolute_ticks
+            )
+        {
+            my $tickpos = ( $tick - $self->group->ymin ) * $yscale;
 
-	   $group->line(x1=>$self->xoffset + ($self->x_intercept * $xscale),
-					y1=>$self->yoffset+$self->ysize-$tickpos,
-					x2=>$self->xoffset + ($self->x_intercept * $xscale)-($self->group->_parent_svg->margin/8),
-					y2=>$self->yoffset+$self->ysize-$tickpos,
-					style=>{$self->_style}
-				   );
+            $group->line(
+                x1 => $self->xoffset + ( $self->x_intercept * $xscale ),
+                y1 => $self->yoffset + $self->ysize - $tickpos,
+                x2 => $self->xoffset 
+                    + ( $self->x_intercept * $xscale )
+                    - ( $self->group->_parent_svg->margin / 8 ),
+                y2    => $self->yoffset + $self->ysize - $tickpos,
+                style => { $self->_style }
+            );
 
+            #tick label
+            my $y_tick_label = shift @y_tick_labels;
 
-	   #tick label
-	   my $y_tick_label = shift @y_tick_labels;
-#	   my $x = $self->xoffset + $tickpos;
-	   my $x = $self->xoffset + ($self->x_intercept * $xscale) - ($self->group->_parent_svg->margin);
+            #	   my $x = $self->xoffset + $tickpos;
+            my $x
+                = $self->xoffset 
+                + ( $self->x_intercept * $xscale )
+                - ( $self->group->_parent_svg->margin );
+
 #	   my $y = $self->yoffset+$self->ysize+($self->group->_parent_svg->margin/4);
-	   my $y = $self->yoffset + $self->ysize - $tickpos;
-	   $group->text(
-					x=>$x,
-					y=>$y,
-#					transform=>"rotate(90,$x,$y)",
-				   )->cdata($y_tick_label);
+            my $y = $self->yoffset + $self->ysize - $tickpos;
+            $group->text(
+                x => $x,
+                y => $y,
 
-	   #intertick label
-	   my $y_intertick_label = shift @y_intertick_labels;
-	   $tickpos = (((2 * $tick) - 1) / 2) * $xscale;
-	   $x = $self->xoffset + $tickpos;
-	   $group->text(
-					x=>$x,
-					y=>$y,
-#					transform=>"rotate(90,$x,$y)",
-				   )->cdata($y_intertick_label);
+                #					transform=>"rotate(90,$x,$y)",
+            )->cdata($y_tick_label);
 
-	 }
-   } elsif($self->y_fractional_ticks){
-	 my $inc = $self->group->yrange / $self->y_fractional_ticks;
-	 for(my $tick = $self->group->ymin ; $tick <= $self->group->ymax ; $tick += $inc){
-	   my $tickpos = ($tick - $self->group->ymin) * $xscale;
+            #intertick label
+            my $y_intertick_label = shift @y_intertick_labels;
+            $tickpos = ( ( ( 2 * $tick ) - 1 ) / 2 ) * $xscale;
+            $x = $self->xoffset + $tickpos;
+            $group->text(
+                x => $x,
+                y => $y,
 
-	   $group->line(x1=>$self->xoffset + ($self->x_intercept * $xscale),
-					y1=>$self->yoffset+$self->ysize-$tickpos,
-					x2=>$self->xoffset + ($self->x_intercept * $xscale)-($self->group->_parent_svg->margin/8),
-					y2=>$self->yoffset+$self->ysize-$tickpos,
-					style=>{$self->_style}
-				   );
-	 }
-   }
+                #					transform=>"rotate(90,$x,$y)",
+            )->cdata($y_intertick_label);
+
+        }
+    }
+    elsif ( $self->y_fractional_ticks ) {
+        my $inc = $self->group->yrange / $self->y_fractional_ticks;
+        for (
+            my $tick = $self->group->ymin;
+            $tick <= $self->group->ymax;
+            $tick += $inc
+            )
+        {
+            my $tickpos = ( $tick - $self->group->ymin ) * $xscale;
+
+            $group->line(
+                x1 => $self->xoffset + ( $self->x_intercept * $xscale ),
+                y1 => $self->yoffset + $self->ysize - $tickpos,
+                x2 => $self->xoffset 
+                    + ( $self->x_intercept * $xscale )
+                    - ( $self->group->_parent_svg->margin / 8 ),
+                y2    => $self->yoffset + $self->ysize - $tickpos,
+                style => { $self->_style }
+            );
+        }
+    }
 
 }
 
@@ -180,7 +234,7 @@ sub draw{
 
 =cut
 
-sub x_intercept{
+sub x_intercept {
     my $self = shift;
 
     return $self->{'x_intercept'} = shift if @_;
@@ -199,7 +253,7 @@ sub x_intercept{
 
 =cut
 
-sub y_intercept{
+sub y_intercept {
     my $self = shift;
 
     return $self->{'y_intercept'} = shift if @_;
@@ -218,7 +272,7 @@ sub y_intercept{
 
 =cut
 
-sub x_fractional_ticks{
+sub x_fractional_ticks {
     my $self = shift;
 
     return $self->{'x_fractional_ticks'} = shift if @_;
@@ -237,7 +291,7 @@ sub x_fractional_ticks{
 
 =cut
 
-sub y_fractional_ticks{
+sub y_fractional_ticks {
     my $self = shift;
 
     return $self->{'y_fractional_ticks'} = shift if @_;
@@ -256,7 +310,7 @@ sub y_fractional_ticks{
 
 =cut
 
-sub x_absolute_ticks{
+sub x_absolute_ticks {
     my $self = shift;
 
     return $self->{'x_absolute_ticks'} = shift if @_;
@@ -275,7 +329,7 @@ sub x_absolute_ticks{
 
 =cut
 
-sub y_absolute_ticks{
+sub y_absolute_ticks {
     my $self = shift;
 
     return $self->{'y_absolute_ticks'} = shift if @_;
@@ -294,7 +348,7 @@ sub y_absolute_ticks{
 
 =cut
 
-sub x_intertick_labels{
+sub x_intertick_labels {
     my $self = shift;
 
     return $self->{'x_intertick_labels'} = shift if @_;
@@ -313,7 +367,7 @@ sub x_intertick_labels{
 
 =cut
 
-sub x_tick_labels{
+sub x_tick_labels {
     my $self = shift;
 
     return $self->{'x_tick_labels'} = shift if @_;
@@ -332,7 +386,7 @@ sub x_tick_labels{
 
 =cut
 
-sub y_intertick_labels{
+sub y_intertick_labels {
     my $self = shift;
 
     return $self->{'y_intertick_labels'} = shift if @_;
@@ -351,7 +405,7 @@ sub y_intertick_labels{
 
 =cut
 
-sub y_tick_labels{
+sub y_tick_labels {
     my $self = shift;
 
     return $self->{'y_tick_labels'} = shift if @_;
