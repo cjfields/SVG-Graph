@@ -1,11 +1,17 @@
 Revision history for Perl extension SVG::Graph.
 
 {{$NEXT}}
+  - Clean up to squash modern perl errors [cjfields]
+  - Remove redundant Data modules [cjfields]
+  - Set up for Dist::Zilla releases [cjfields]
+  - Modernize tests [cjfields]
+  - Set license to Artistic 1.0, per original README
+    [cjfields]
 
 0.02 June 11, 2008
-        - Updated License to Artistic 2.0.  See README file.
+  - Updated License to Artistic 2.0.  See README file.
 
 0.01  Sat Jun 21 19:25:42 2003
-	- original version; created by h2xs 1.21 with options
-		-X SVG::Graph
+  - original version; created by h2xs 1.21 with options 
+    -X SVG::Graph
 
