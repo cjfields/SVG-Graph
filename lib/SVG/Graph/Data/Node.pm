@@ -131,7 +131,7 @@ sub branch_label {
     my $self = shift;
 
     return $self->{'branch_label'} = shift if @_;
-    return $self->{'branch_label'};
+    return $self->{'branch_label'} || '';
 }
 
 =head2 _style
