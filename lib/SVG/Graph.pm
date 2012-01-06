@@ -126,6 +126,7 @@ visit the project page at http://www.sf.net/projects/svg-graph
 
  James Chen,     <chenj@seas.ucla.edu>
  Brian O'Connor, <boconnor@ucla.edu>
+ Chris Fields,   cjfields at bioperl dot org
 
 =head1 SEE ALSO
 

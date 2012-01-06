@@ -67,13 +67,13 @@ sub draw {
 
 #	 $group->line(x1=>$cx,y1=>$cy , x2=>$x2 , y2=> $y2,style=>{'stroke-width'=>1,'stroke'=>'black'});
 #	 $group->ellipse(cx=>$cx,cy=>$cy,rx=>$r,ry=>$s,style=>{'fill-opacity'=>0,'stroke'=>'black'});
-
+        my $fill_color = ($wedge % 7) + 1;
         $group->path(
             d     => "M$cx,$cy L$x1,$y1 A$r,$s 0 $large 1 $x2,$y2 L$cx,$cy",
             style => {
                 'fill-opacity' => 0.4,
-                'fill'         => $fill{$wedge},
-                stroke         => $fill{$wedge},
+                'fill'         => $fill_color, #$fill{$wedge},
+                'stroke'       => $fill_color, #$fill{$wedge},
                 'stroke-width' => 1
             },
         );
