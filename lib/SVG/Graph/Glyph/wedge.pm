@@ -13,7 +13,6 @@ use constant PI => 3.14159;
  Returns : 
  Args    :
 
-
 =cut
 
 sub draw {
